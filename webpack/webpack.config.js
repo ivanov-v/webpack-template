@@ -4,8 +4,16 @@ const fs = require('fs');
 const projectPath = fs.realpathSync(process.cwd());
 
 module.exports = {
-    entry: './src/index.ts',
+    mode: 'development',
     devtool: 'inline-source-map',
+    watch: true,
+    entry: {
+        app: './src/index.tsx',
+    },
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(projectPath, 'build'),
+    },
     module: {
         rules: [
             {
@@ -17,9 +25,5 @@ module.exports = {
     },
     resolve: {
         extensions: [ '.tsx', '.ts', '.js' ],
-    },
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(projectPath, 'build'),
     },
 };

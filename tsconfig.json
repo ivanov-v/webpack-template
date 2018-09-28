@@ -2,10 +2,13 @@
   "compilerOptions": {
     "outDir": "./build/",
     "noImplicitAny": true,
-    "module": "es6",
+    "module": "esnext",
     "target": "es5",
     "jsx": "react",
     "allowJs": true,
     "sourceMap": true
-  }
+  },
+  "include": [
+    "./src/**/**/*"
+  ]
 }
