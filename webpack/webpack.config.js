@@ -12,7 +12,7 @@ module.exports = {
     },
     output: {
         filename: 'bundle.js',
-        path: path.resolve(projectPath, 'build'),
+        path: path.resolve(projectPath, 'build/static/js'),
     },
     module: {
         rules: [
@@ -21,9 +21,19 @@ module.exports = {
                 use: 'ts-loader',
                 exclude: /node_modules/
             },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/,
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 10000,
+                        name: '../media/[name].[hash:8].[ext]',
+                    },
+                },
+            },
         ],
     },
     resolve: {
-        extensions: [ '.tsx', '.ts', '.js' ],
+        extensions: ['.tsx', '.ts', '.js'],
     },
 };
